@@ -59,3 +59,8 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
     cd /usr/local/bin && \
     ln -s /opt/poetry/bin/poetry && \
     poetry config virtualenvs.create false
+
+# Install OpenJDK-11
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jre-headless && \
+    apt-get clean;
