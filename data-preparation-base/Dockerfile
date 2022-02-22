@@ -26,10 +26,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 #Install osm2pgrouting
-RUN cd /tmp/ && wget http://security.ubuntu.com/ubuntu/pool/universe/b/boost1.62/libboost-program-options1.62.0_1.62.0+dfsg-5_amd64.deb \
-    && dpkg -i libboost-program-options1.62.0_1.62.0+dfsg-5_amd64.deb \
-    && wget http://ftp.br.debian.org/debian/pool/main/o/osm2pgrouting/osm2pgrouting_2.2.0-1_amd64.deb \
-    && dpkg -i osm2pgrouting_2.2.0-1_amd64.deb \
+RUN cd /tmp/ && wget http://ftp.de.debian.org/debian/pool/main/b/boost1.74/libboost-program-options1.74.0_1.74.0-9_amd64.deb \
+    && dpkg -i  libboost-program-options1.74.0_1.74.0-9_amd64.deb \
+    && wget http://ftp.de.debian.org/debian/pool/main/libp/libpqxx/libpqxx-6.4_6.4.5-2_amd64.deb \
+    && dpkg -i libpqxx-6.4_6.4.5-2_amd64.deb \
+    && wget http://ftp.br.debian.org/debian/pool/main/o/osm2pgrouting/osm2pgrouting_2.3.7-1_amd64.deb \
+    && dpkg -i osm2pgrouting_2.3.7-1_amd64.deb\
     && rm -rf /tmp/*
 
 
