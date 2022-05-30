@@ -56,6 +56,9 @@ RUN add-apt-repository -y -r ppa:osmadmins/ppa \
 # Install osmCtools
 RUN apt-get install -y osmctools
 
+# Install osmium
+RUN apt-get install -y osmium-tool
+
 # Install Poetry
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python && \
     cd /usr/local/bin && \
@@ -68,4 +71,4 @@ RUN apt-get update && \
     apt-get clean;
 
 # Install GDAL
-RUN apt-get gdal-bin -y
+RUN apt-get install -y gdal-bin 
