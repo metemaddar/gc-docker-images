@@ -66,3 +66,6 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
 RUN apt-get update && \
     apt-get install -y openjdk-11-jre-headless && \
     apt-get clean;
+
+# Install GDAL
+RUN apt-get gdal-bin
