@@ -68,4 +68,4 @@ RUN apt-get update && \
     apt-get clean;
 
 # Install GDAL
-RUN apt-get gdal-bin
+RUN apt-get gdal-bin -y
