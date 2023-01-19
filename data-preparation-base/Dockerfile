@@ -60,7 +60,7 @@ RUN apt-get install -y osmctools
 RUN apt-get install -y osmium-tool
 
 # Install Poetry
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | POETRY_HOME=/opt/poetry python && \
+RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \
     cd /usr/local/bin && \
     ln -s /opt/poetry/bin/poetry && \
     poetry config virtualenvs.create false
@@ -72,3 +72,17 @@ RUN apt-get update && \
 
 # Install GDAL
 RUN apt-get install -y gdal-bin 
+
+
+# Install libpostal
+WORKDIR /tmp/
+RUN apt-get install -y curl autoconf automake libtool python-dev pkg-config
+RUN curl -sL https://github.com/openvenues/libpostal/archive/refs/tags/v1.1.tar.gz | tar -xz
+WORKDIR /tmp/libpostal-1.1/
+RUN ./bootstrap.sh
+RUN ./configure
+RUN make -j4
+RUN make install
+RUN ldconfig
+WORKDIR /tmp/
+RUN rm -rf /tmp/libpostal-1.1
